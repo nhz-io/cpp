@@ -53,6 +53,8 @@ The `::` is read: "has type"
 
 Example:
 * `(forall a)[a]` is the family of types consisting of, for every type `a`, the type of `lists of a`
+* Identifiers such as above (a, `[a]`) are called *type variables*
+* `(forall a)` part can be omitted 
 
 Valid Examples of `(forall a)[a]`:
 * Lists of integers (`[1, 2, 3]`)
@@ -61,3 +63,19 @@ Valid Examples of `(forall a)[a]`:
 
 Invalid Examples of `(forall a)[a]`:
 * Invalid types combination (`[2, 'b']`)
+
+#### Haskell's type system properties
+https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system
+
+* Every well-typed expression is guaranteed to have a unique principal type
+* Principal type can be inferred automatically
+
+#### Principal type
+> An expression's or function's *principal type* is the least general type that, intuitively,
+  "contains all instances of the expression"
+ 
+Examples:
+* `[a]->a`
+* `[b]->a`
+* `a->a`
+* `[Integer]->Integer` - too specific
