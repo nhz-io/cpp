@@ -35,3 +35,16 @@ Examples:
 * `Integer->Integer`
 * `[Integer]`
 * `(Char, Integer)`
+
+### Typings
+> Haskell types are *not* first-class. Association of a value with its type is called *typing*
+
+Examples:
+* `5 :: Integer`
+* `'a' :: Char`
+* `inc :: Integer->Integer`
+* `[1, 2, 3] :: [Integer]`
+* `('b', 4) :: (Char, Integer)
+
+The `::` is read: "has type"
+
