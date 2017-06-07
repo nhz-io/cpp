@@ -44,7 +44,7 @@ Examples:
 * `'a' :: Char`
 * `inc :: Integer->Integer`
 * `[1, 2, 3] :: [Integer]`
-* `('b', 4) :: (Char, Integer)
+* `('b', 4)` :: (Char, Integer)
 
 The `::` is read: "has type"
 
@@ -78,4 +78,4 @@ Examples:
 * `[a]->a`
 * `[b]->a`
 * `a->a`
-* `[Integer]->Integer` - too specific
+* `[Integer]->Integer`
