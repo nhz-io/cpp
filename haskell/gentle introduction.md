@@ -48,3 +48,16 @@ Examples:
 
 The `::` is read: "has type"
 
+### Polymorphic Types
+> Types that are universally quantified in some way over all types are *polymorphic*
+
+Example:
+* `(forall a)[a]` is the family of types consisting of, for every type `a`, the type of `lists of a`
+
+Valid Examples of `(forall a)[a]`:
+* Lists of integers (`[1, 2, 3]`)
+* Lists of characters (`['a', 'b', 'c']`)
+* Lists of lists (`[[a], [b], [c]]`)
+
+Invalid Examples of `(forall a)[a]`:
+* Invalid types combination (`[2, 'b']`)
