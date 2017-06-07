@@ -109,3 +109,17 @@ data Point a = Pt a a
 Important to distinguish between:
 * Applying *data constructor* to yield a *value* (Run-time)
 * Applying *type constructor* to yield a *type* (Compile-time)
+
+### Recursive Types
+
+Example:
+```
+data Tree a = Leaf a | Branch (Tree a) (Tree a)
+```
+
+* `Tree` is a *type constructor*
+* `Leaf` and `Branch` are *data constructor*
+
+Inferred typings:
+* `Branch :: Tree a -> Tree a -> Tree a`
+* `Leaf   :: a -> Tree a`
