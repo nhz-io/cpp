@@ -79,3 +79,33 @@ Examples:
 * `[b]->a`
 * `a->a`
 * `[Integer]->Integer`
+
+### User-Defined Types
+
+Example *enumerated type*, *disjoint type*:
+```
+data Bool = False | True
+```
+
+* `Bool` is a nullary *type constructor*
+* `False` and `True` are nullary *data constructors*
+* `Bool` is *enumerated type* since it consists of finite number of *nullary constructors*
+* `Bool` is *disjoint type* (*union type*, *sum type*) since it has multiple *data constructors*
+
+Example *tuple type*:
+```
+data Point a = Pt a a
+```
+
+* `Point` is an *unary constructor*
+* `Point` is a *polymorphic type* 
+* `Pt` is a *binary data constructor*
+* `Pt` type is: `a -> a -> Point a`
+* `Point` is called a *tuple type* because of the single *data constructor*
+* `Point` and `Pt` are in separate namespaces - *type constructor* and *data constructor*
+  can have same name
+
+
+Important to distinguish between:
+* Applying *data constructor* to yield a *value* (Run-time)
+* Applying *type constructor* to yield a *type* (Compile-time)
