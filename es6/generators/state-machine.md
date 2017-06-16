@@ -98,11 +98,58 @@ const turnstile = init({
 })
 ```
 
-## Sample usage
 ```js
 console.log(
     [...turnstile([
         [PUSH], [PUSH], [COIN], [COIN]
     ])].map(id => ({[UNLOCKED]: 'Unlocked', [LOCKED]: 'Locked'}[id]))
 )
+```
+
+### Result
+```js
+[ 'Locked', 'Locked', 'Unlocked', 'Unlocked' ]
+undefined
+```
+
+## No reentry
+```js
+const noReentry = init(
+    {
+        [LOCKED]: {
+            [PUSH]: LOCKED,
+            [COIN]: UNLOCKED,
+        },
+        [UNLOCKED]: {
+            [PUSH]: LOCKED,
+            [COIN]: UNLOCKED,
+        }
+    },
+    {
+        * [LOCKED]([_, $]) {
+            if (_ !== LOCKED) {
+                yield [LOCKED]
+            }
+        },
+        * [UNLOCKED]([_, $]) {
+            if (_ !== UNLOCKED) {
+                yield [UNLOCKED]
+            }
+        },
+    }
+)
+```
+
+```js
+console.log(
+    [...noReentry([
+        [PUSH], [PUSH], [COIN], [COIN], [COIN], [PUSH], [PUSH], [PUSH]
+    ])].map(id => ({[UNLOCKED]: 'Unlocked', [LOCKED]: 'Locked'}[id]))
+)
+```
+
+### Result
+```js
+[ 'Unlocked', 'Locked' ]
+undefined
 ```
